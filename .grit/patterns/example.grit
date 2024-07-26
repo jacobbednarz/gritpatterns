@@ -1,0 +1,3 @@
+pattern replace_console_log() {
+  `console.log($args)` => `console.error($args)`
+}
