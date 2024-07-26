@@ -3,6 +3,7 @@ patterns:
   - name: foo
     level: error
     body: |
+      engine marzano(0.1)
       language hcl
       
       pattern foo() {
@@ -12,6 +13,7 @@ patterns:
   - name: rewrite_cloudflare_record_value_to_content
     level: error
     body: |
+      engine marzano(0.1)
       language hcl
       
       pattern rewrite_cloudflare_record_value_to_content() {
