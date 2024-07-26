@@ -1,5 +1,12 @@
 version: 0.0.2
 patterns:
+  - name: foo
+    level: error
+    body: |
+      pattern foo() {
+        `foo` => `bar`
+      }
+    description: example test
   - name: rewrite_cloudflare_record_value_to_content
     level: error
     body: |
@@ -28,3 +35,4 @@ patterns:
           	type = "A"
           	ttl = 3600
           }
+      
