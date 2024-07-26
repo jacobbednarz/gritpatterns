@@ -3,7 +3,7 @@ patterns:
   - name: foo
     level: error
     body: |
-      language markdown
+      language hcl
       
       pattern foo() {
         `foo` => `bar`
@@ -12,7 +12,7 @@ patterns:
   - name: rewrite_cloudflare_record_value_to_content
     level: error
     body: |
-      language markdown
+      language hcl
       
       pattern rewrite_cloudflare_record_value_to_content() {
         `value = $v` as $record => `content = $v` where $record <: and {
