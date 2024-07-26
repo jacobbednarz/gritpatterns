@@ -1,0 +1,28 @@
+version: 0.0.1
+patterns:
+  - name: rewrite_cloudflare_record_value_to_content
+    level: error
+    body: |
+      `value = $v` as $record => `content = $v` where $record <: and {
+        within `resource "cloudflare_record" $_ { $_ }`,
+        not within `data { $_ }`,
+      }
+    description: |
+      upgrades value to content
+    samples:
+      - input: |
+          resource "cloudflare_record" "example" {
+          	zone_id = "example"
+          	name = "@"
+          	value = "192.168.0.10"
+          	type = "A"
+          	ttl = 3600
+          }
+        output: |
+          resource "cloudflare_record" "example" {
+          	zone_id = "example"
+          	name = "@"
+          	content = "192.168.0.10"
+          	type = "A"
+          	ttl = 3600
+          }
